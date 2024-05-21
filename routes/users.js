@@ -5,7 +5,7 @@ import { ObjectId } from "mongodb";
 const router = express.Router();
 
 
-// username email password
+//! username email password isAdmin
 
 // Create a user
 router.post("/", async (req, res) => {
@@ -53,7 +53,7 @@ router.delete("/:id", async (req, res) => {
 router.post("/signin", async(req,res)=>{
     const user = await db.collection('users').findOne({email:req.body.email})
     if (!user){
-        res.send('server')
+        res.send('server not found')
     }
     if (req.body.password !== user.password){
         res.send('user not found')
